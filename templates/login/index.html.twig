@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sap-Lu application{% endblock %}
+
+{% block javascript %}
+
+    {{ encore_entry_script_tags('spinners') }}
+    
+{% endblock %}
+
+{% block body %}
+
+   {% if error %}
+      <div class="alert alert-danger">
+         {{error.messagekey}}
+      </div>
+   {% endif %}
+
+   <br>
+   <form action="{{path('app_login')}}" method="post">
+      <div class="row">
+         <div class="col-4"></div>
+         <div class="col-4">
+            <label class="mb-2" for="phone">Número de teléfono</label>
+            <input type="number" name="_username" id="phone" class="form-control" value="{{ last_username }}">
+         </div>
+         <div class="col-4"></div>
+      </div>
+      <div class="row mt-2">
+         <div class="col-4"></div>
+         <div class="col-4">
+         <label class="mb-2" for="phone">Password</label>
+            <input type="password" name="_password" id="password" class="form-control">  
+         </div>
+         <div class="col-4"></div>
+      </div>
+      <div class="text-center mt-3">
+         <button type="submit" id="submitButton" class="btn btn-primary">
+            Iniciar sesión
+            <div class="spinner-border spinner-border-sm d-none spinner-submit" role="status">
+                  <span class="visually-hidden">Cargando...</span>
+            </div>
+         </button>
+      </div>
+   </form>
+{% endblock %}

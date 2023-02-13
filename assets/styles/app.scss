@@ -1,0 +1,26 @@
+@import "~bootstrap/scss/bootstrap";
+
+body {
+    background-color: #ecb3ff;
+}
+
+.navbar {
+    background-color: #600080;
+}
+
+#tableUserInfo {
+    background-color: #600080;
+    table-layout: fixed;
+    color: white;
+}
+
+.nav-link {
+    color: white;
+}
+
+#iconoSaplu {
+    width:50px;
+    height:50px;
+    margin-left:50px;
+    margin-right:50px;
+}
