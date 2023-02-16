@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello DeleteUserOrWorkerController!{% endblock %}
+
+{% block body %}
+
+    <div class="alert alert-danger text-center">
+        Eliminado de datos de usuario o trabajador
+    </div>
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-5">          
+            {{form_start(formUsers)}}
+            {{form_widget(formUsers)}}
+            {{form_end(formUsers)}}
+        </div>
+        <div class="col-5">          
+            {{form_start(formWorkers)}}
+            {{form_widget(formWorkers)}}
+            {{form_end(formWorkers)}}
+        </div>
+        <div class="col-1"></div>
+    </div>
+
+{% endblock %}

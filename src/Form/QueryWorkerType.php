@@ -8,15 +8,15 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class QueryClientType extends AbstractType
+class QueryWorkerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
         ->add('usuario', ChoiceType::class, [
-            'label' => 'Seleccione usuario',
+            'label' => 'Seleccione trabajador',
             'choices'  => [
-                'Seleccione el usuario' => $options['empty_data']['usuarios']
+                'Seleccione el usuario' => $options['empty_data']['workers']
             ],
             'attr' => [
                 'class' => 'form-control',
