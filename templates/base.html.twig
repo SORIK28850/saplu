@@ -15,62 +15,25 @@
 
         {% block header %}
 
-            <nav class="navbar navbar-expand-lg">
-                <div class="d-flex justify-content-center">
-                    <button class="navbar-toggler" type="button" style="color: white;" data-bs-toggle="collapse" data-bs-target="#menu" aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="">Menu</span>
-                    </button>
-                    <img src="img/saplu.jpg" id="iconoSaplu">
-                    <ul class="navbar-nav collapse navbar-collapse" id="menu">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="{{path('home')}}">Home</a>
-                        </li>
-                        {% if app.user %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{path('app_register_work')}}">Registrar trabajo</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{path('app_query_user')}}">Consultar usuario</a>
-                            </li>
-                            {% if app.user.role == 'Administrador' %}
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="{{path('app_register_user')}}">Registrar trabajador</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{path('app_register_client')}}">Registrar usuario</a>
-                                </li>
-                                <li class="nav-item active">
-                                    <a class="nav-link" href="{{path('app_delete_user_or_worker')}}">Eliminar trabajador o usuario</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{path('app_job_history')}}">Mostrar histórico</a>
-                                </li>
-                        {% endif %}
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{path('app_logout')}}">Cerrar sesión</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item active">
-                                <a class="nav-link" href="{{path('app_login')}}">Login</a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </div>
-            </nav>
+            {{ include('navBar.html.twig') }}
 
         {% endblock %}
 
-        {% block body %}               
+        {% block body %}      
+
             <div id="page-content-wrapper">
                 {% block main %}{% endblock %}
-            </div>                
+            </div>
+
         {% endblock %}
 
         {% block footer %}
         {% endblock %}
 
         {% block javascripts %}
+
             {{ encore_entry_script_tags('app') }}
+            
         {% endblock %}
     </body>
 </html>
