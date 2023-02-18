@@ -17,11 +17,19 @@ class RegisterUserController extends AbstractController
     /** @var EntityManagerInterface*/
     public $entityManagerInterface;
 
+    /**
+     * @param EntityManagerInterface $entityManagerInterface
+     */
     public function __construct(EntityManagerInterface $entityManagerInterface)
     {
         $this->entityManagerInterface = $entityManagerInterface;
     }
 
+    /**
+     * @param Request $request
+     * @param UserPasswordHasherInterface $encoder
+     * @return Response
+     */
     #[Route('/register/user', name: 'app_register_user')]
     public function registerUser(Request $request, UserPasswordHasherInterface $encoder): Response
     {

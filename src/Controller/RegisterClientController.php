@@ -15,11 +15,18 @@ class RegisterClientController extends AbstractController
     /** @var EntityManagerInterface*/
     public $entityManagerInterface;
 
+    /**
+     * @param EntityManagerInterface $entityManagerInterface
+     */
     public function __construct(EntityManagerInterface $entityManagerInterface)
     {
         $this->entityManagerInterface = $entityManagerInterface;
     }
 
+    /**
+     * @param Request $request
+     * @return Reponse
+     */
     #[Route('/register/client', name: 'app_register_client')]
     public function registerClient(Request $request): Response
     {

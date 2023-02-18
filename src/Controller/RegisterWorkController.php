@@ -24,6 +24,11 @@ class RegisterWorkController extends AbstractController
     /** @var UserRepository*/
     public $userRepository;
 
+    /**
+     * @param EntityManagerInterface $entityManagerInterface,
+     * @param ClientRepository $clientRepository
+     * @param UserRepository $userRepository
+     */
     public function __construct(
         EntityManagerInterface $entityManagerInterface,
         ClientRepository $clientRepository,
@@ -35,6 +40,10 @@ class RegisterWorkController extends AbstractController
         $this->userRepository = $userRepository;
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     #[Route('/register/work', name: 'app_register_work')]
     public function index(Request $request): Response
     {
@@ -68,6 +77,9 @@ class RegisterWorkController extends AbstractController
         ]);
     }
 
+    /**
+     * @return array
+     */
     private function getDistinctClients(): array
     {
         $clients = $this->clientRepository->findAll();
@@ -80,6 +92,9 @@ class RegisterWorkController extends AbstractController
         return $clientsNames;
     }
 
+    /**
+     * @return array
+     */
     private function getDistinctWorkers(): array
     {
         $workers = $this->userRepository->findAll();

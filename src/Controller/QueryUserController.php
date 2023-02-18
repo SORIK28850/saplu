@@ -14,11 +14,18 @@ class QueryUserController extends AbstractController
      /** @var ClientRepository*/
      public $clientRepository;
  
+     /**
+      * @param ClientRepository $clientRepository
+      */
      public function __construct(ClientRepository $clientRepository)
      {
          $this->clientRepository = $clientRepository;
      }
 
+     /**
+      * @param Request $request
+      * @return Reponse
+      */
     #[Route('/query/user', name: 'app_query_user')]
     public function index(Request $request): Response
     {
@@ -59,6 +66,9 @@ class QueryUserController extends AbstractController
         ]);
     }
 
+    /**
+     * @return array
+     */
     private function getDistinctClients(): array
     {
         $clients = $this->clientRepository->findAll();
@@ -71,6 +81,10 @@ class QueryUserController extends AbstractController
         return $clientsNames;
     }
 
+    /**
+     * @param string $clientName
+     * @return array
+     */
     private function getDataClient(string $clientName): array
     {
         return $this->clientRepository->findBy(['name' => $clientName]);
