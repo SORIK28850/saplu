@@ -10,9 +10,6 @@ body {
     background-color: #538cbb;
     table-layout: auto;
     color: white;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
 }
 
 .nav-link {
@@ -22,8 +19,8 @@ body {
 #iconoSaplu {
     width:50px;
     height:50px;
-    margin-left:20px;
-    margin-right:20px;
+    margin-left:10px;
+    margin-right:10px;
     margin-top:5px;
     float: left;
 }
@@ -35,6 +32,5 @@ body {
 
 .navbar-toggler {
     color: white;
-    margin-left:20px;
-    margin-right:20px;
+    margin-left:10px;
 }

@@ -4,31 +4,37 @@
 
 {% block body %}
 
-    <table class="table table-bordered mt-3" id="tableUserInfo">
-        <thead>
-            <tr>
-            <th scope="col-2">Nombre</th>
+    <div class="row"></div>
+        <div class="col-1"></div>
+        <div class="col-10">
+            <table class="table table-bordered mt-3" id="tableUserInfo">
+                <thead>
+                    <tr>
+                    <th scope="col-2">Nombre</th>
 
-            {% if (app.user.role == "Administrador") %}
-                <th scope="col-2">Teléfono</th>
-            {% endif %}
+                    {% if (app.user.role == "Administrador") %}
+                        <th scope="col-2">Teléfono</th>
+                    {% endif %}
 
-            <th scope="col-2">Dirección</th>
-            <th scope="col-2">Cuidados</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-            <td>{{data.name}}</td>
+                    <th scope="col-2">Dirección</th>
+                    <th scope="col-2">Cuidados</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>{{data.name}}</td>
 
-            {% if (app.user.role == "Administrador") %}
-                <td>{{data.phone}}</td>
-            {% endif %}
-            
-            <td>{{data.address}}</td>
-            <td>{{data.cares}}</td>
-            </tr>
-        </tbody>
-    </table>
+                    {% if (app.user.role == "Administrador") %}
+                        <td>{{data.phone}}</td>
+                    {% endif %}
+                    
+                    <td>{{data.address}}</td>
+                    <td>{{data.cares}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-1"></div>
+    </div>
 
 {% endblock %}

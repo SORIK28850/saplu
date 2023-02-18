@@ -1,28 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sap-Lu application{% endblock %}
+{% block title %}Sap-Lu aplication{% endblock %}
 
 {% block body %}
-    <table class="table table-bordered mt-3" id="tableWorkInfo">
-        <thead>
-            <tr>
-            <th scope="col-2">Usuario</th>
-            <th scope="col-2">Trabajador</th>
-            <th scope="col-2">Tipo</th>
-            <th scope="col-2">Hora</th>
-            <th scope="col-2">Observaciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for element in data %}
-            <tr>
-                <td>{{element.client}}</td>
-                <td>{{element.user}}</td>
-                <td>{{element.type}}</td>
-                <td>{{element.time|date('d-m-Y H:i:s')}}</td>
-                <td>{{element.observations}}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+
+    <div class="row"></div>
+        <div class="col-1"></div>
+        <div class="col-10">
+            <table class="table table-bordered mt-3" id="tableWorkInfo">
+                <thead>
+                    <tr>
+                    <th scope="col-2">Usuario</th>
+                    <th scope="col-2">Trabajador</th>
+                    <th scope="col-2">Tipo</th>
+                    <th scope="col-2">Hora</th>
+                    <th scope="col-2">Observaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for element in data %}
+                    <tr>
+                        <td>{{element.client}}</td>
+                        <td>{{element.user}}</td>
+                        <td>{{element.type}}</td>
+                        <td>{{element.time|date('d-m-Y H:i:s')}}</td>
+                        <td>{{element.observations}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-1"></div>
+    </div>
 {% endblock %}
