@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modificación de datos{% endblock %}
+
+{% block body %}
+
+    {% if formUsers is defined and formWorkers is defined %}
+
+        <div class="alert alert-primary text-center">
+            Modificado de datos de usuario o trabajador
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-5">          
+                {{form_start(formUsers)}}
+                {{form_widget(formUsers)}}
+                {{form_end(formUsers)}}
+            </div>
+            <div class="col-5">          
+                {{form_start(formWorkers)}}
+                {{form_widget(formWorkers)}}
+                {{form_end(formWorkers)}}
+            </div>
+            <div class="col-1"></div>
+        </div>
+
+    {% elseif form is defined %}
+
+        <div class="alert alert-primary text-center">
+            Modificar datos
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">          
+                {{form_start(form)}}
+                {{form_widget(form)}}
+                {{form_end(form)}}
+            </div>
+            <div class="col-3"></div>
+        </div>
+
+    {% endif %}
+    
+{% endblock %}

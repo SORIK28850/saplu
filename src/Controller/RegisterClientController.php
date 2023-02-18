@@ -35,6 +35,13 @@ class RegisterClientController extends AbstractController
         $form = $this->createForm(
             ClientType::class,
             $client,
+            [
+                'method' => 'POST',
+                'empty_data' =>
+                [
+                    'submitContent' => 'Registrar usuario'
+                ]
+            ]
         );
         $form->handleRequest($request);
 
