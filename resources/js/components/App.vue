@@ -1,7 +1,9 @@
 <template>
   <div>
-    Hola desde App.vue
-    <v-btn color="primary">Primary</v-btn>
+    <router-link to="/home">
+      <v-btn color="primary">Primary</v-btn>
+    </router-link>
+    <router-view />
   </div>
 </template>
 
