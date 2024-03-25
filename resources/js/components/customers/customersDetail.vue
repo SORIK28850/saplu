@@ -5,17 +5,42 @@
           <v-card>
             <img
               src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg">
-            <v-card-text>
-                Nombre: {{ item.name }}<br>
-                Teléfono: {{ item.phone }}<br>
-                Dirección: {{ item.address }}<br>
-                Cuidados: {{ item.care }}<br>
-                Horario: {{ item.schedule }}<br>
-                Medicamentos: {{ item.pills }}<br> 
-                Tipo de dieta: {{ item.dietType }}<br>
-                Teléfono familiar: {{ item.familyPhone }}
-            </v-card-text>
-  
+            
+            <v-card class="mb-4" outlined>
+                <v-card-title>Nombre</v-card-title>
+                <v-card-text>{{ item.name }}</v-card-text>
+            </v-card>
+
+            <v-card class="mb-4" outlined>
+                <v-card-title>Teléfono</v-card-title>
+                <v-card-text>{{ item.phone }}</v-card-text>
+            </v-card>
+
+            <v-card class="mb-4" outlined>
+                <v-card-title>Dirección</v-card-title>
+                <v-card-text><a :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}`" target="_blank">{{ item.address }}</a></v-card-text>
+            </v-card>
+            <v-card class="mb-4" outlined>
+                <v-card-title>Cuidados</v-card-title>
+                <v-card-text>{{ item.care }}</v-card-text>
+            </v-card>
+            <v-card class="mb-4" outlined>
+                <v-card-title>Horario</v-card-title>
+                <v-card-text>{{ item.schedule }}</v-card-text>
+            </v-card>
+            <v-card class="mb-4" outlined>
+                <v-card-title>Medicamentos</v-card-title>
+                <v-card-text>{{ item.pills }}</v-card-text>
+            </v-card>
+            <v-card class="mb-4" outlined>
+                <v-card-title>Tipo de dieta</v-card-title>
+                <v-card-text>{{ item.dietType }}</v-card-text>
+            </v-card>
+            <v-card class="mb-4" outlined>
+                <v-card-title>Teléfono familiar</v-card-title>
+                <v-card-text>{{ item.familyPhone }}</v-card-text>
+            </v-card>
+
             <v-card-actions>
               <v-spacer></v-spacer>
   

@@ -23,12 +23,8 @@
 
 <script>
 import axios from 'axios';
-import CustomersDetail from './customersDetail.vue';
 
 export default {
-  components: {
-    CustomersDetail,
-  },
   data: () => ({
     selectedItem: null,
     itemsPerPage: 5,
