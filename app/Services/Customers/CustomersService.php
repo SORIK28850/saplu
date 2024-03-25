@@ -16,4 +16,9 @@ class CustomersService
     {
         return $this->customersRepository->getCustomers();
     }
+
+    public function getCustomerById($id)
+    {
+        return $this->customersRepository->getCustomerById($id);
+    }
 }

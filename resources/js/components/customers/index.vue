@@ -11,7 +11,7 @@
         @update:options="loadItems"
       >
       <template v-slot:item.actions="{ item }">
-        <router-link to="/customers-detail" @click.native="setSelectedItem(item)">
+        <router-link :to="{ name: 'customers-detail', params: { id: item.id } }">
           <v-btn color="primary">Ver</v-btn>
         </router-link>
       </template>
@@ -57,9 +57,6 @@ export default {
           console.error(error);
           this.loading = false;
         });
-    },
-    setSelectedItem(item) {
-      this.$store.commit('setSelectedItem', item);
     },
   },
 }

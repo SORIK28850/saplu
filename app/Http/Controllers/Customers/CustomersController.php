@@ -19,4 +19,9 @@ class CustomersController extends Controller
     {
         return $this->customersService->getCustomers();
     }
+
+    public function getById(Request $request)
+    {
+        return $this->customersService->getCustomerById($request->id);
+    }
 }

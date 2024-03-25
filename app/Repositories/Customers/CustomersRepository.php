@@ -9,4 +9,9 @@ class CustomersRepository
     {
         return Customers::all();
     }
+
+    public function getCustomerById($id)
+    {
+        return Customers::find($id);
+    }
 }
