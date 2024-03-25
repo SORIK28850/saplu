@@ -7,31 +7,31 @@
     :loading="loading"
     item-value="name"
     @update:options="loadItems"
-  ></v-data-table-server>
+  >
+    <template v-slot:item.actions="{ item }">
+      <v-btn color="primary" @click="openDialog(item)">Ver</v-btn>
+    </template>
+    
+  </v-data-table-server>
+  <ModalCard v-model="dialog" @close="dialog = false" :item="selectedItem"/>
 </template>
 
 <script>
 import axios from 'axios';
+import ModalCard from './modalCard.vue';
 
 export default {
+  components: {
+    ModalCard,
+  },
   data: () => ({
+    selectedItem: null,
+    dialog: false,
     itemsPerPage: 5,
     headers: [
-        {
-          title: 'ID',
-          align: 'start',
-          sortable: false,
-          key: 'id',
-        },
-        { title: 'Actions', key: 'actions', align: 'end' },
-        { title: 'Name', key: 'name', align: 'end' },
-        { title: 'Phone', key: 'phone', align: 'end' },
-        { title: 'Address', key: 'address', align: 'end' },
-        { title: 'Care', key: 'care', align: 'end' },
-        { title: 'Schedule', key: 'schedule', align: 'end' },
-        { title: 'Pills', key: 'pills', align: 'end' },
-        { title: 'Diet Type', key: 'dietType', align: 'end' },
-        { title: 'Family Phone', key: 'familyPhone', align: 'end' },
+        { title: '', key: 'actions', align: 'end' },
+        { title: 'Nombre', key: 'name', align: 'end' },
+        
       ],
     serverItems: [],
     loading: true,
@@ -54,6 +54,10 @@ export default {
           console.error(error);
           this.loading = false;
         });
+    },
+    openDialog(item) {
+      this.selectedItem = item;
+      this.dialog = true;
     },
   },
 }
