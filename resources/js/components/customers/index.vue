@@ -1,32 +1,36 @@
 <template>
-  <v-data-table-server
-    v-model:items-per-page="itemsPerPage"
-    :headers="headers"
-    :items="serverItems"
-    :items-length="totalItems"
-    :loading="loading"
-    item-value="name"
-    @update:options="loadItems"
-  >
-    <template v-slot:item.actions="{ item }">
-      <v-btn color="primary" @click="openDialog(item)">Ver</v-btn>
-    </template>
+  <v-row style="justify-content: center;">
+    <v-col cols="6">
+      <v-data-table-server
+        v-model:items-per-page="itemsPerPage"
+        :headers="headers"
+        :items="serverItems"
+        :items-length="totalItems"
+        :loading="loading"
+        item-value="name"
+        @update:options="loadItems"
+      >
+      <template v-slot:item.actions="{ item }">
+        <router-link to="/customers-detail" @click.native="setSelectedItem(item)">
+          <v-btn color="primary">Ver</v-btn>
+        </router-link>
+      </template>
     
-  </v-data-table-server>
-  <ModalCard v-model="dialog" @close="dialog = false" :item="selectedItem"/>
+      </v-data-table-server>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
 import axios from 'axios';
-import ModalCard from './modalCard.vue';
+import CustomersDetail from './customersDetail.vue';
 
 export default {
   components: {
-    ModalCard,
+    CustomersDetail,
   },
   data: () => ({
     selectedItem: null,
-    dialog: false,
     itemsPerPage: 5,
     headers: [
         { title: 'Nombre', key: 'name', align: 'end' },
@@ -54,9 +58,8 @@ export default {
           this.loading = false;
         });
     },
-    openDialog(item) {
-      this.selectedItem = item;
-      this.dialog = true;
+    setSelectedItem(item) {
+      this.$store.commit('setSelectedItem', item);
     },
   },
 }

@@ -7,7 +7,7 @@
       <v-btn color="secondary">Customers</v-btn>
     </router-link>
     <v-row style="justify-content: center;">
-      <v-col cols="4">
+      <v-col cols="8">
         <router-view />
       </v-col>
     </v-row>
