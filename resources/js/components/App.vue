@@ -6,7 +6,11 @@
     <router-link to="/customers">
       <v-btn color="secondary">Customers</v-btn>
     </router-link>
-    <router-view />
+    <v-row style="justify-content: center;">
+      <v-col cols="4">
+        <router-view />
+      </v-col>
+    </v-row>
   </div>
 </template>
 

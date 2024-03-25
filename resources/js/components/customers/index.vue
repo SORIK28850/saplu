@@ -29,9 +29,8 @@ export default {
     dialog: false,
     itemsPerPage: 5,
     headers: [
-        { title: '', key: 'actions', align: 'end' },
         { title: 'Nombre', key: 'name', align: 'end' },
-        
+        { title: '', key: 'actions', align: 'end' },
       ],
     serverItems: [],
     loading: true,
