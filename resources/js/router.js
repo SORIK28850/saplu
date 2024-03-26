@@ -8,7 +8,7 @@ import CustomersCreate from './components/customers/customersCreate.vue';
 const routes = [
   { path: '/home', component: Home },
   { path: '/', component: Empty },
-  { path: '/customers', component: CustomersIndex },
+  { path: '/customers', component: CustomersIndex, name: 'customers'},
   { path: '/customers-detail/:id?', name: 'customers-detail', props: true, component: CustomersDetail },
   { path: '/customers-create', component: CustomersCreate, name: 'customers-create'}
 ]

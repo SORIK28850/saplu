@@ -1,12 +1,18 @@
 <template>
   <v-row class="mt-5" style="justify-content: center;">
     <v-col cols="8">
+      <v-row style="justify-content: center;">
+        <v-col cols="6">
+          <v-text-field v-model="search" label="Buscar" outlined dense ></v-text-field>
+        </v-col>
+      </v-row>
+
       <v-data-table-server
         style="color: white;"
         class="custom-table"
         v-model:items-per-page="itemsPerPage"
         :headers="headers"
-        :items="serverItems"
+        :items="paginatedItems"
         :items-length="totalItems"
         :loading="loading"
         item-value="name"
@@ -17,7 +23,6 @@
           <v-btn color="primary">Ver</v-btn>
         </router-link>
       </template>
-    
       </v-data-table-server>
     </v-col>
   </v-row>
@@ -31,24 +36,37 @@ export default {
     selectedItem: null,
     itemsPerPage: 5,
     headers: [
-        { title: 'Nombre', key: 'name', align: 'start' },
-        { title: '', key: 'actions', align: 'end' },
+        { title: 'Nombre', key: 'name', align: 'start', sortable: false},
+        { title: '', key: 'actions', align: 'end', sortable: false },
       ],
     serverItems: [],
     loading: true,
     totalItems: 0,
     currentPage: 1,
     totalPages: 0,
+    search: '',
   }),
+  computed: {
+    paginatedItems() {
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = startIndex + this.itemsPerPage;
+      return this.filteredItems.slice(startIndex, endIndex);
+    },
+    filteredItems() {
+      return this.serverItems.filter(item =>
+        item.name.toLowerCase().includes(this.search.toLowerCase())
+      );
+    }
+  },
   methods: {
-    loadItems ({ page, itemsPerPage, sortBy }) {
-      this.loading = true
+    loadItems({ page, itemsPerPage, sortBy }) {
+      this.loading = true;
       axios.get(`http://127.0.0.1:8000/api/customers`)
         .then(response => {
           this.totalItems = response.data.length;
           this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
           this.currentPage = page;
-          this.serverItems = response.data.slice((page - 1) * itemsPerPage, page * itemsPerPage);
+          this.serverItems = response.data;
           this.loading = false;
         })
         .catch(error => {
@@ -66,4 +84,7 @@ export default {
   border-radius: 5% !important;
 }
 
+.custom-table th {
+  font-weight: bold;
+}
 </style>
