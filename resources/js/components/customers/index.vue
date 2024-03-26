@@ -1,7 +1,9 @@
 <template>
-  <v-row style="justify-content: center;">
-    <v-col cols="6">
+  <v-row class="mt-5" style="justify-content: center;">
+    <v-col cols="8">
       <v-data-table-server
+        style="color: white;"
+        class="custom-table"
         v-model:items-per-page="itemsPerPage"
         :headers="headers"
         :items="serverItems"
@@ -29,7 +31,7 @@ export default {
     selectedItem: null,
     itemsPerPage: 5,
     headers: [
-        { title: 'Nombre', key: 'name', align: 'end' },
+        { title: 'Nombre', key: 'name', align: 'start' },
         { title: '', key: 'actions', align: 'end' },
       ],
     serverItems: [],
@@ -57,3 +59,11 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.custom-table {
+  background-color: rgba(128, 0, 128) !important;
+  border-radius: 5% !important;
+}
+
+</style>

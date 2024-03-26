@@ -21,4 +21,20 @@ class CustomersService
     {
         return $this->customersRepository->getCustomerById($id);
     }
+
+    public function createCustomer($request)
+    {
+        return $this->customersRepository->createCustomer($request);
+    }
+
+    public function updateCustomer($request)
+    {
+        return $this->customersRepository->updateCustomer($request);
+    }
+
+    public function deleteCustomer($id)
+    {
+        return $this->customersRepository->deleteCustomer($id);
+    }
+
 }

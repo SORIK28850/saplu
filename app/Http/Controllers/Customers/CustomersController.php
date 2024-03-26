@@ -24,4 +24,20 @@ class CustomersController extends Controller
     {
         return $this->customersService->getCustomerById($request->id);
     }
+
+    public function create(Request $request)
+    {
+        return $this->customersService->createCustomer($request);
+    }
+
+    public function update(Request $request)
+    {
+        return $this->customersService->updateCustomer($request);
+    }
+
+    public function delete(Request $request)
+    {
+        return $this->customersService->deleteCustomer($request->id);
+    }
+
 }

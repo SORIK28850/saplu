@@ -14,4 +14,22 @@ class CustomersRepository
     {
         return Customers::find($id);
     }
+
+    public function createCustomer($request)
+    {
+        return Customers::create($request->all());
+    }
+
+    public function updateCustomer($request)
+    {
+        $customer = Customers::find($request->id);
+        $customer->update($request->all());
+        return $customer;
+    }
+
+    public function deleteCustomer($id)
+    {
+        return Customers::destroy($id);
+    }
+    
 }
