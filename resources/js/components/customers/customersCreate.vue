@@ -2,12 +2,12 @@
     <v-form ref="form" v-model="valid" @submit.prevent="submitForm">
         <v-text-field v-model="item.name" label="Nombre" required variant="solo"></v-text-field>
         <v-text-field v-model="item.phone" label="Teléfono" type="number" required variant="solo"></v-text-field>
+        <v-text-field v-model="item.familyPhone" label="Teléfono  del cuidador habitual" type="number" variant="solo"></v-text-field>
         <v-text-field v-model="item.address" label="Dirección" required variant="solo"></v-text-field>
         <v-textarea v-model="item.care" label="Cuidado" required variant="solo"></v-textarea>
         <v-text-field v-model="item.schedule" label="Horario" required variant="solo"></v-text-field>
         <v-text-field v-model="item.pills" label="Medicación" variant="solo"></v-text-field>
         <v-text-field v-model="item.observations" label="Observaciones" variant="solo"></v-text-field>
-        <v-text-field v-model="item.familyPhone" label="Teléfono de la familia" type="number" variant="solo"></v-text-field>
       <v-row>
         <v-col cols="6">
           <v-btn :disabled="submitting" type="submit" color="success" block>Crear</v-btn>

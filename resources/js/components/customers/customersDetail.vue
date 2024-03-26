@@ -22,6 +22,11 @@
             </v-card>
 
             <v-card class="mb-4" outlined>
+                <v-card-title>Teléfono del cuidador habitual</v-card-title>
+                <v-card-text>{{ item.familyPhone }}</v-card-text>
+            </v-card>
+
+            <v-card class="mb-4" outlined>
                 <v-card-title>Dirección</v-card-title>
                 <v-card-text><a :href="`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.address)}`" target="_blank">{{ item.address }}</a></v-card-text>
             </v-card>
@@ -40,10 +45,6 @@
             <v-card class="mb-4" outlined>
                 <v-card-title>Observaciones</v-card-title>
                 <v-card-text>{{ item.observations }}</v-card-text>
-            </v-card>
-            <v-card class="mb-4" outlined>
-                <v-card-title>Teléfono familiar</v-card-title>
-                <v-card-text>{{ item.familyPhone }}</v-card-text>
             </v-card>
 
             <v-card-actions>
