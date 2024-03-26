@@ -12,6 +12,11 @@
             </v-card>
 
             <v-card class="mb-4" outlined>
+                <v-card-title>Información del usuario</v-card-title>
+                <v-card-text>{{ item.userInformation }}</v-card-text>
+            </v-card>
+
+            <v-card class="mb-4" outlined>
                 <v-card-title>Teléfono</v-card-title>
                 <v-card-text>{{ item.phone }}</v-card-text>
             </v-card>
@@ -33,8 +38,8 @@
                 <v-card-text>{{ item.pills }}</v-card-text>
             </v-card>
             <v-card class="mb-4" outlined>
-                <v-card-title>Tipo de dieta</v-card-title>
-                <v-card-text>{{ item.dietType }}</v-card-text>
+                <v-card-title>Observaciones</v-card-title>
+                <v-card-text>{{ item.observations }}</v-card-text>
             </v-card>
             <v-card class="mb-4" outlined>
                 <v-card-title>Teléfono familiar</v-card-title>

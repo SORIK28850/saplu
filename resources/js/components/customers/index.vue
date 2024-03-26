@@ -18,11 +18,15 @@
         item-value="name"
         @update:options="loadItems"
       >
-      <template v-slot:item.actions="{ item }">
-        <router-link :to="{ name: 'customers-detail', params: { id: item.id } }">
-          <v-btn color="primary">Ver</v-btn>
-        </router-link>
-      </template>
+        <template v-slot:item.actions="{ item }">
+          <router-link :to="{ name: 'customers-detail', params: { id: item.id } }">
+            <v-btn color="primary">Ver</v-btn>
+          </router-link>
+          <router-link :to="{ name: 'customers-update', params: { id: item.id } }">
+            <v-btn color="warning" class="ml-1 mr-1">Editar</v-btn>
+          </router-link>
+          <v-btn color="red" @click="deleteItem(item.id)">Eliminar</v-btn>
+        </template>
       </v-data-table-server>
     </v-col>
   </v-row>
@@ -73,6 +77,27 @@ export default {
           console.error(error);
           this.loading = false;
         });
+    },
+    async deleteItem(id) {
+      const confirmed = await this.$swal({
+        title: '¿Estás seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '¡Sí, bórralo!'
+      });
+
+      if (confirmed.isConfirmed) {
+        try {
+          const response = await axios.delete('http://127.0.0.1:8000/api/customers-delete', { data: { id: id } });
+          this.$swal('Eliminado!', 'El usuario ha sido eliminado.', 'success');
+          this.loadItems({ page: this.currentPage, itemsPerPage: this.itemsPerPage });
+        } catch (error) {
+          console.error(error);
+        }
+      }
     },
   },
 }
