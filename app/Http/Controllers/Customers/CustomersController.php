@@ -27,17 +27,54 @@ class CustomersController extends Controller
 
     public function create(Request $request)
     {
-        return $this->customersService->createCustomer($request);
+        try {
+            $requestData = $request->all();
+
+            if ($request->hasFile('photo')) {
+                $file = $request->file('photo');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads'), $filename);
+                $requestData['photo'] = $filename;
+            }
+
+            $requestData['phone'] = intval($requestData['phone']);
+            $requestData['familyPhone'] = intval($requestData['familyPhone']);
+
+            $result = $this->customersService->createCustomer($requestData);
+
+            return response()->json($result);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     public function update(Request $request)
     {
-        return $this->customersService->updateCustomer($request);
+        
+
+        try {
+            $requestData = $request->all();
+            
+            if ($request->hasFile('photo')) {
+                $file = $request->file('photo');
+                $filename = time() . '.' . $file->getClientOriginalExtension();
+                $file->move(public_path('uploads'), $filename);
+                $requestData['photo'] = $filename;
+            }
+            $requestData['id'] = intval($requestData['id']);
+            $requestData['phone'] = intval($requestData['phone']);
+            $requestData['familyPhone'] = intval($requestData['familyPhone']);
+
+            $result = $this->customersService->updateCustomer($requestData);
+    
+            return response()->json($result);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 
     public function delete(Request $request)
     {
         return $this->customersService->deleteCustomer($request->id);
     }
-
 }

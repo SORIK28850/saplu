@@ -4,7 +4,8 @@
         <v-col cols="10">
           <v-card>
             <img
-              src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg">
+              class="customer-photo"
+              :src="item.photo ? `http://127.0.0.1:8000/uploads/${item.photo}` : 'https://source.unsplash.com/random'">
             
             <v-card class="mb-4" outlined>
                 <v-card-title>Nombre</v-card-title>
@@ -96,4 +97,9 @@ export default {
 </script>
   
 <style scoped>
+.customer-photo {
+  width: 100%;
+  max-height: 600px;
+  object-fit: cover;
+}
 </style>

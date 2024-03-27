@@ -19,5 +19,6 @@ class Customers extends Model
         'pills',
         'observations',
         'familyPhone',
+        'photo',
     ];
 }

@@ -17,13 +17,14 @@ class CustomersRepository
 
     public function createCustomer($request)
     {
-        return Customers::create($request->all());
+        return Customers::create($request);
     }
 
-    public function updateCustomer($request)
+    public function updateCustomer(array $request)
     {
-        $customer = Customers::find($request->id);
-        $customer->update($request->all());
+        $customer = Customers::find($request['id']);
+        $customer->update($request);
+        
         return $customer;
     }
 
