@@ -2,6 +2,7 @@
     <v-form @submit.prevent="submitForm" ref="form">
       <v-text-field v-model="user.name" label="Nombre" required></v-text-field>
       <v-text-field v-model="user.email" label="Email" required></v-text-field>
+      <v-text-field v-model="user.phone" label="Teléfono" type="number" required></v-text-field>
       <v-text-field v-model="user.password" label="Contraseña" type="password" required></v-text-field>
       <v-text-field v-model="confirmPassword" label="Confirmar Contraseña" type="password" :rules="[passwordMatch]" required></v-text-field>
       <v-btn type="submit" color="primary">Crear Usuario</v-btn>
@@ -17,6 +18,7 @@
       user: {
         name: '',
         email: '',
+        phone: '',
         password: '',
       },
       confirmPassword: '',

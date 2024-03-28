@@ -2,6 +2,7 @@
     <v-form ref="form" @submit.prevent="submitForm">
       <v-text-field v-model="user.name" label="Nombre" required></v-text-field>
       <v-text-field v-model="user.email" label="Email" required></v-text-field>
+      <v-text-field v-model="user.phone" label="Teléfono" type="number" required></v-text-field>
       <v-text-field v-model="user.password" label="Contraseña" type="password"></v-text-field>
       <v-text-field v-model="confirmPassword" label="Confirmar Contraseña" type="password" :rules="[passwordMatch]"></v-text-field>
       <v-row>
@@ -25,6 +26,7 @@
       user: {
         name: '',
         email: '',
+        phone: '',
         password: '',
       },
       confirmPassword: '',
@@ -75,6 +77,7 @@
       resetForm() {
         this.user.name = '';
         this.user.email = '';
+        this.user.phone = '';
         this.user.password = '';
         this.confirmPassword = '';
       },
