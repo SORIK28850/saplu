@@ -1,10 +1,13 @@
 <template>
   <v-app class="backgroundLateral">
     <v-app-bar app color="purple darken-2" dark>
-      <v-app-bar-title> Saplu control de usuarios</v-app-bar-title>
+      <v-app-bar-title> Sap Lu control de usuarios</v-app-bar-title>
+      <v-spacer></v-spacer>
+      <v-btn color="white" style="font-weight: bold;" @click="logout">Cerrar sesión</v-btn> <!-- Botón de cierre de sesión -->
     </v-app-bar>
     <v-row class="mt-15">
-      <v-col cols="3" style="display: flex; flex-direction: column;">
+      <v-col cols="3" v-if="!isAuthenticated"></v-col>
+      <v-col cols="3" style="display: flex; flex-direction: column;" v-if="isAuthenticated">
         <router-link to="/home">
           <v-btn block color="primary">Home</v-btn>
         </router-link>
@@ -46,10 +49,31 @@
 </template>
 
 <script>
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'; // Asegúrate de que estás importando getAuth de firebase/auth
+import { useRouter } from 'vue-router';
+
 export default {
   data: () => ({
-
+    isAuthenticated: false,
   }),
+  created() {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      this.isAuthenticated = !!user; // Actualiza isAuthenticated cuando el estado de autenticación cambia
+    });
+  },
+  methods: {
+    logout() {
+      const auth = getAuth();
+      signOut(auth)
+        .then(() => {
+          this.$router.push('/'); // Redirige al usuario a la página de inicio de sesión después de cerrar la sesión
+        })
+        .catch((error) => {
+          console.error('Error al cerrar la sesión:', error);
+        });
+    },
+  },
 };
 </script>
 

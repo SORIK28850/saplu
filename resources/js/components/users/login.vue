@@ -1,42 +1,48 @@
 <template>
-    <v-form ref="form" @submit.prevent="submitForm">
-      <v-text-field v-model="user.email" label="Email" required></v-text-field>
-      <v-text-field v-model="user.password" label="Contraseña" type="password" required></v-text-field>
-      <v-btn :disabled="isSubmitting" type="submit" color="success" block>Iniciar sesión</v-btn>
-    </v-form>
-  </template>
-  
-  <script>
-  export default {
-    name: 'Login',
-    data: () => ({
+  <v-form ref="form" @submit.prevent="Login">
+    <v-text-field v-model="email" label="Email" required></v-text-field>
+    <v-text-field v-model="password" label="Contraseña" type="password" required></v-text-field>
+    <v-btn :disabled="isSubmitting" type="submit" color="success" block>Iniciar sesión</v-btn>
+  </v-form>
+</template>
+
+<script>
+import { ref } from 'vue';
+import { useStore } from 'vuex';
+import { useRouter } from 'vue-router';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+
+export default {
+  name: "LoginComponent",
+  data() {
+    return {
       isSubmitting: false,
-      user: {
-        email: '',
-        password: '',
-      },
-    }),
-    methods: {
-      async submitForm() {
-        if (this.$refs.form.validate()) {
-          this.isSubmitting = true;
-          try {
-            const response = await axios.post('http://127.0.0.1:8000/api/login', this.user);
-            const token = response;
-            localStorage.setItem('token', token);
-            console.log('Token guardado:', token);
-            this.$router.push({ name: 'Home' });
-          } catch (error) {
-            console.error(error);
-          } finally {
-            this.isSubmitting = false;
-          }
+      email: '',
+      password: '',
+      error: null,
+    };
+  },
+  methods: {
+    async Login() {
+      if (this.$refs.form.validate()) {
+        this.isSubmitting = true;
+        const auth = getAuth();
+        try {
+          const response = await signInWithEmailAndPassword(auth, this.email, this.password);
+          const token = await response.user.getIdToken();
+          localStorage.setItem('token', token);
+          this.$router.push('home');
+        } catch (err) {
+          this.error = err.message;
+        } finally {
+          this.isSubmitting = false;
         }
-      },
+      }
     },
-  };
-  </script>
-  
-  <style scoped>
-  
-  </style>
+  },
+};
+</script>
+
+<style scoped>
+
+</style>

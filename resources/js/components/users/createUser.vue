@@ -11,6 +11,10 @@
   
   <script>
   import axios from 'axios';
+  import { ref } from 'vue';
+  import { useStore } from 'vuex';
+  import { useRouter } from 'vue-router';
+
   
   export default {
     name: 'createUser',
@@ -23,6 +27,29 @@
       },
       confirmPassword: '',
     }),
+    setup() {
+      const name = ref('')
+      const email = ref('')
+      const password = ref('')
+      const error = ref(null)
+      const store = useStore()
+      const router = useRouter()
+
+      const Register = async (user) => {
+        try {
+          await store.dispatch('register', {
+            email: user.email,
+            password: user.password,
+            name: user.name
+          })
+        }
+        catch (err) {
+          error.value = err.message
+        }
+      }
+
+      return { Register, name,email, password, error }
+    },
     computed: {
       passwordMatch() {
         return (v) => v === this.user.password || 'Las contraseñas deben coincidir';
@@ -38,6 +65,8 @@
               text: 'El usuario ha sido creado con éxito.',
               icon: 'success',
             });
+            await this.Register(this.user);
+
             this.$router.push({ name: 'users' });
           } catch (error) {
             console.error(error);
