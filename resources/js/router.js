@@ -23,10 +23,12 @@ const routes = [
 ];
 
 let isAuthenticated = false;
+let authReady = false; // Nuevo estado para saber cuando la autenticación está lista
 
 const auth = getAuth();
 onAuthStateChanged(auth, (user) => {
   isAuthenticated = !!user;
+  authReady = true; // La autenticación está lista
 });
 
 const router = createRouter({
@@ -35,10 +37,23 @@ const router = createRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
-    next('/'); // redirige al usuario a la página de inicio de sesión si no está autenticado
+  if (!authReady) { // Si la autenticación no está lista, espera
+    const checkAuthReady = setInterval(() => {
+      if (authReady) {
+        clearInterval(checkAuthReady);
+        if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
+          next('/'); // redirige al usuario a la página de inicio de sesión si no está autenticado
+        } else {
+          next(); // permite el acceso a la ruta
+        }
+      }
+    }, 50);
   } else {
-    next(); // permite el acceso a la ruta
+    if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
+      next('/'); // redirige al usuario a la página de inicio de sesión si no está autenticado
+    } else {
+      next(); // permite el acceso a la ruta
+    }
   }
 });
 

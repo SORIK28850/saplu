@@ -2,6 +2,7 @@
     <v-form ref="form" v-model="valid" @submit.prevent="submitForm">
       <v-file-input v-model="item.photo" label="Foto de perfil" variant="solo"></v-file-input>
       <v-text-field v-model="item.name" label="Nombre" required variant="solo"></v-text-field>
+      <v-text-field v-model="item.userInformation" label="Información del usuario" required variant="solo"></v-text-field>
       <v-text-field v-model="item.phone" label="Teléfono" required variant="solo"></v-text-field>
       <v-text-field v-model="item.caregiverPhone" label="Teléfono  del cuidador habitual" variant="solo"></v-text-field>
       <v-text-field v-model="item.address" label="Dirección" required variant="solo"></v-text-field>
