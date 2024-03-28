@@ -30,7 +30,7 @@ class CustomersFactory extends Factory
             'schedule' => $this->faker->text,
             'pills' => $this->faker->text,
             'observations' => $this->faker->text,
-            'familyPhone' => $this->faker->randomNumber(9, true), // Genera un número de 10 dígitos
+            'caregiverPhone' => $this->faker->randomNumber(9, true), // Genera un número de 10 dígitos
         ];
     }
 }

@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name')->nullable();
             $table->string('userInformation')->nullable();
-            $table->integer('phone');
-            $table->string('address');
-            $table->text('care');
-            $table->string('schedule');
+            $table->string('photo')->nullable();
+            $table->string('phone')->nullable();
+            $table->string('caregiverPhone')->nullable();
+            $table->string('address')->nullable();
+            $table->text('care')->nullable();
+            $table->string('schedule')->nullable();
             $table->string('pills')->nullable();
             $table->string('observations')->nullable();
-            $table->integer('familyPhone')->nullable();
             $table->timestamps();
         });
     }

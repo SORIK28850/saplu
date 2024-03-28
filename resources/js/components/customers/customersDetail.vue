@@ -24,7 +24,7 @@
 
             <v-card class="mb-4" outlined>
                 <v-card-title>Teléfono del cuidador habitual</v-card-title>
-                <v-card-text>{{ item.familyPhone }}</v-card-text>
+                <v-card-text>{{ item.caregiverPhone }}</v-card-text>
             </v-card>
 
             <v-card class="mb-4" outlined>
@@ -40,7 +40,7 @@
                 <v-card-text>{{ item.schedule }}</v-card-text>
             </v-card>
             <v-card class="mb-4" outlined>
-                <v-card-title>Medicamentos</v-card-title>
+                <v-card-title>Medicación</v-card-title>
                 <v-card-text>{{ item.pills }}</v-card-text>
             </v-card>
             <v-card class="mb-4" outlined>

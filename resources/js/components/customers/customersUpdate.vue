@@ -1,10 +1,10 @@
 <template>
   <v-form ref="form" @submit.prevent="submitForm">
-    <v-file-input v-model="item.photo" label="Foto de perfil" variant="solo"></v-file-input>
+    <v-file-input v-model="photoInput" label="Foto de perfil" variant="solo"></v-file-input>
     <v-text-field v-model="item.name" label="Nombre" required variant="solo"></v-text-field>
     <v-text-field v-model="item.userInformation" label="información del usuario" required variant="solo"></v-text-field>
-    <v-text-field v-model="item.phone" label="Teléfono" type="number" required variant="solo"></v-text-field>
-    <v-text-field v-model="item.familyPhone" label="Teléfono del cuidador habitual" type="number" variant="solo"></v-text-field>
+    <v-text-field v-model="item.phone" label="Teléfono" required variant="solo"></v-text-field>
+    <v-text-field v-model="item.caregiverPhone" label="Teléfono del cuidador habitual" variant="solo"></v-text-field>
     <v-text-field v-model="item.address" label="Dirección" required variant="solo"></v-text-field>
     <v-textarea v-model="item.care" label="Cuidado" required variant="solo"></v-textarea>
     <v-text-field v-model="item.schedule" label="Horario" required variant="solo"></v-text-field>
@@ -28,16 +28,17 @@ export default {
   name: 'CustomersUpdate',
   data: () => ({
     isSubmitting: false,
+    photoInput: null,
     item: {
       name: '',
-      phone: '',
       userInformation: '',
+      phone: '',
+      caregiverPhone: '',
       address: '',
       care: '',
       schedule: '',
       pills: '',
       observations: '',
-      familyPhone: '',
       photo: null,
     },
   }),
@@ -53,6 +54,7 @@ export default {
       })
       .then(response => {
         this.item = response.data;
+        this.item.photo = [this.item.photo];
       })
       .catch(error => {
         console.error(error);
@@ -63,10 +65,8 @@ export default {
       try {
         const formData = new FormData();
         for (const key in this.item) {
-          if (key === 'photo' && this.item[key]) {
-            formData.append(key, this.item[key][0]);
-          } else if (typeof this.item[key] === 'number') {
-            formData.append(key, parseInt(this.item[key]));
+          if (key === 'photo' && this.photoInput) {
+            formData.append(key, this.photoInput[0]);
           } else {
             formData.append(key, this.item[key]);
           }
@@ -90,12 +90,13 @@ export default {
     resetForm() {
       this.item.name = '';
       this.item.phone = '';
+      this.item.caregiverPhone = '';
       this.item.address = '';
       this.item.care = '';
       this.item.schedule = '';
       this.item.pills = '';
       this.item.observations = '';
-      this.item.familyPhone = '';
+      this.userInformation = '',
       this.item.photo = null;
     },
   },

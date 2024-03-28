@@ -34,6 +34,7 @@
 
 <script>
 import axios from 'axios';
+import $ from 'jquery';
 
 export default {
   data: () => ({
@@ -50,6 +51,11 @@ export default {
     totalPages: 0,
     search: '',
   }),
+  mounted() {
+      this.$nextTick(function () {
+        $('.custom-table span').css('font-weight', 'bold');
+      })
+    },
   computed: {
     paginatedItems() {
       const startIndex = (this.currentPage - 1) * this.itemsPerPage;

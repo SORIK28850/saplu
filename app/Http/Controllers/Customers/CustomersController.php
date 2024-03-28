@@ -37,9 +37,6 @@ class CustomersController extends Controller
                 $requestData['photo'] = $filename;
             }
 
-            $requestData['phone'] = intval($requestData['phone']);
-            $requestData['familyPhone'] = intval($requestData['familyPhone']);
-
             $result = $this->customersService->createCustomer($requestData);
 
             return response()->json($result);
@@ -62,8 +59,6 @@ class CustomersController extends Controller
                 $requestData['photo'] = $filename;
             }
             $requestData['id'] = intval($requestData['id']);
-            $requestData['phone'] = intval($requestData['phone']);
-            $requestData['familyPhone'] = intval($requestData['familyPhone']);
 
             $result = $this->customersService->updateCustomer($requestData);
     

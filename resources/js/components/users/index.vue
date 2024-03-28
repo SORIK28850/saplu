@@ -31,6 +31,7 @@
   
   <script>
   import axios from 'axios';
+  import $ from 'jquery';
   
   export default {
     data: () => ({
@@ -38,6 +39,7 @@
       itemsPerPage: 5,
       headers: [
           { title: 'Nombre', key: 'name', align: 'start', sortable: false},
+          { title: 'Teléfono', key: 'phone', align: 'start', sortable: false},
           { title: 'Email', key: 'email', align: 'start', sortable: false},
           { title: '', key: 'actions', align: 'end', sortable: false },
         ],
@@ -48,6 +50,11 @@
       totalPages: 0,
       search: '',
     }),
+    mounted() {
+      this.$nextTick(function () {
+        $('.custom-table span').css('font-weight', 'bold');
+      })
+    },
     computed: {
       paginatedItems() {
         const startIndex = (this.currentPage - 1) * this.itemsPerPage;
@@ -101,14 +108,11 @@
   }
   </script>
   
-  <style scoped>
-  .custom-table {
-    background-color: rgba(128, 0, 128) !important;
-    border-radius: 5% !important;
-  }
-  
-  .custom-table th {
-    font-weight: bold;
-  }
-  </style>
+<style scoped>
+.custom-table {
+  background-color: rgba(128, 0, 128) !important;
+  border-radius: 5% !important;
+}
+
+</style>
   

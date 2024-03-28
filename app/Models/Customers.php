@@ -12,13 +12,13 @@ class Customers extends Model
     protected $fillable = [
         'name',
         'userInformation',
+        'photo',
         'phone',
+        'caregiverPhone',
         'address',
         'care',
         'schedule',
         'pills',
         'observations',
-        'familyPhone',
-        'photo',
     ];
 }
