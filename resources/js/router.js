@@ -36,7 +36,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
-    next('/'); // redirige al usuario a la página de inicio de sesión si no está autenticado
+    next('/Home'); // redirige al usuario a la página de inicio de sesión si no está autenticado
   } else {
     next(); // permite el acceso a la ruta
   }

@@ -3,7 +3,7 @@
     <v-app-bar app color="purple darken-2" dark>
       <v-app-bar-title> Sap Lu control de usuarios</v-app-bar-title>
       <v-spacer></v-spacer>
-      <v-btn color="white" style="font-weight: bold;" @click="logout">Cerrar sesión</v-btn> <!-- Botón de cierre de sesión -->
+      <v-btn color="white" style="font-weight: bold;" @click="logout" v-if="isAuthenticated">Cerrar sesión</v-btn> <!-- Botón de cierre de sesión -->
     </v-app-bar>
     <v-row class="mt-15">
       <v-col cols="3" v-if="!isAuthenticated"></v-col>

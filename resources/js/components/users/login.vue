@@ -3,6 +3,8 @@
     <v-text-field v-model="email" label="Email" required></v-text-field>
     <v-text-field v-model="password" label="Contraseña" type="password" required></v-text-field>
     <v-btn :disabled="isSubmitting" type="submit" color="success" block>Iniciar sesión</v-btn>
+    <v-alert v-if="success" type="success" dismissible>Usuario logueado</v-alert>
+    <span v-if="error" style="color: red;">Contraseña o nombre de usuario erróneos</span>
   </v-form>
 </template>
 
@@ -20,6 +22,7 @@ export default {
       email: '',
       password: '',
       error: null,
+      success: false,
     };
   },
   methods: {
@@ -31,9 +34,10 @@ export default {
           const response = await signInWithEmailAndPassword(auth, this.email, this.password);
           const token = await response.user.getIdToken();
           localStorage.setItem('token', token);
+          this.success = true;
           this.$router.push('home');
         } catch (err) {
-          this.error = err.message;
+          this.error = true;
         } finally {
           this.isSubmitting = false;
         }
