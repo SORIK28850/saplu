@@ -5,7 +5,7 @@
           <v-card>
             <img
               class="customer-photo"
-              :src="item.photo ? `https://www.sap-lu.com/uploads/${item.photo}` : 'https://source.unsplash.com/random'">
+              :src="item.photo ? `https://www.sap-lu.com/public/uploads/${item.photo}` : 'https://source.unsplash.com/random'">
             
             <v-card class="mb-4" outlined>
                 <v-card-title>Nombre</v-card-title>
