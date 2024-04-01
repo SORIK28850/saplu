@@ -1,8 +1,8 @@
 <template>
     <v-row class="mt-5" style="justify-content: center;">
-      <v-col cols="8">
+      <v-col cols="9">
         <v-row style="justify-content: center;">
-          <v-col cols="6">
+          <v-col cols="">
             <v-text-field v-model="search" label="Buscar" outlined dense ></v-text-field>
           </v-col>
         </v-row>
