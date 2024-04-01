@@ -1,6 +1,6 @@
 <template>
   <v-row class="mt-5" style="justify-content: center;">
-    <v-col cols="9">
+    <v-col cols="11">
       <v-text-field v-model="search" label="Buscar" outlined dense ></v-text-field>
 
       <v-data-table-server

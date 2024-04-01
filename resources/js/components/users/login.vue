@@ -1,11 +1,15 @@
 <template>
-  <v-form ref="form" @submit.prevent="Login">
-    <v-text-field v-model="email" label="Email" required></v-text-field>
-    <v-text-field v-model="password" label="Contraseña" type="password" required></v-text-field>
-    <v-btn :disabled="isSubmitting" type="submit" color="success" block>Iniciar sesión</v-btn>
-    <v-alert v-if="success" type="success" dismissible>Usuario logueado</v-alert>
-    <span v-if="error" style="color: red;">Contraseña o nombre de usuario erróneos</span>
-  </v-form>
+	<v-row style="justify-content: center;" class="mt-5">
+		<v-col cols="9">
+			<v-form ref="form" @submit.prevent="Login">
+			<v-text-field v-model="email" label="Email" required></v-text-field>
+			<v-text-field v-model="password" label="Contraseña" type="password" required></v-text-field>
+			<v-btn :disabled="isSubmitting" type="submit" color="success" block>Iniciar sesión</v-btn>
+			<v-alert v-if="success" type="success" dismissible>Usuario logueado</v-alert>
+			<span v-if="error" style="color: red;">Contraseña o nombre de usuario erróneos</span>
+		  </v-form>
+		</v-col>
+	</v-row>
 </template>
 
 <script>
