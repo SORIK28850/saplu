@@ -34,12 +34,17 @@ const router = createRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth) && !isAuthenticated) {
-    next('/Home'); // redirige al usuario a la página de inicio de sesión si no está autenticado
-  } else {
-    next(); // permite el acceso a la ruta
-  }
+router.beforeEach((to, from) => {
+  return new Promise((resolve) => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (to.matched.some(record => record.meta.requiresAuth) && !user) {
+        resolve('/');
+      } else {
+        resolve();
+      }
+      unsubscribe();
+    });
+  });
 });
 
 export default router;

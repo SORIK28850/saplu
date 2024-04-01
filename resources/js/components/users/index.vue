@@ -63,7 +63,9 @@
       },
       filteredItems() {
         return this.serverItems.filter(item =>
-          item.name.toLowerCase().includes(this.search.toLowerCase())
+        item.name.toLowerCase().includes(this.search.toLowerCase()) ||
+        item.email.toLowerCase().includes(this.search.toLowerCase()) ||
+        String(item.phone).toLowerCase().includes(this.search.toLowerCase())
         );
       }
     },
