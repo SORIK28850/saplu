@@ -72,7 +72,7 @@
     methods: {
       loadItems({ page, itemsPerPage, sortBy }) {
         this.loading = true;
-        axios.get('https://www.sap-lu.com/api/users')
+        axios.get(`https://www.sap-lu.com/api/users`)
           .then(response => {
             this.totalItems = response.data.length;
             this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);

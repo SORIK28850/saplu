@@ -5,7 +5,7 @@
           <v-card>
             <img
               class="customer-photo"
-              :src="item.photo ? `http://127.0.0.1:8000/uploads/${item.photo}` : 'https://source.unsplash.com/random'">
+              :src="item.photo ? `https://www.sap-lu.com/uploads/${item.photo}` : 'https://source.unsplash.com/random'">
             
             <v-card class="mb-4" outlined>
                 <v-card-title>Nombre</v-card-title>
@@ -77,7 +77,7 @@ export default {
       this.$router.go(-1);
     },
     loadItem() {
-      axios.get('http://127.0.0.1:8000/api/customers-detail', {
+      axios.get('https://www.sap-lu.com/api/customers-detail', {
         params: {
           id: this.$route.params.id
         }

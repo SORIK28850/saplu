@@ -59,7 +59,7 @@
       async submitForm() {
         if (this.$refs.form.validate()) {
           try {
-            const response = await axios.post('http://127.0.0.1:8000/api/users-create', this.user);
+            const response = await axios.post('https://www.sap-lu.com/api/users-create', this.user);
             this.$swal({
               title: 'Usuario creado',
               text: 'El usuario ha sido creado con éxito.',
