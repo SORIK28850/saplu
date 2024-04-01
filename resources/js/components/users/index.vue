@@ -113,7 +113,7 @@
 <style scoped>
 .custom-table {
   background-color: rgba(128, 0, 128) !important;
-  border-radius: 5% !important;
+  
 }
 
 </style>

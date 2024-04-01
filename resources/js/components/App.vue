@@ -1,25 +1,27 @@
 <template>
   <v-app class="backgroundLateral">
     <v-app-bar app color="purple darken-2" dark>
+      <v-btn icon @click="drawer = !drawer" v-if="isAuthenticated">
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
       <v-app-bar-title> Sap Lu control de usuarios</v-app-bar-title>
       <v-spacer></v-spacer>
       <v-btn color="white" style="font-weight: bold;" @click="logout" v-if="isAuthenticated">Cerrar sesión</v-btn> <!-- Botón de cierre de sesión -->
     </v-app-bar>
-    <v-row class="mt-15">
-      <v-col cols="3" v-if="!isAuthenticated"></v-col>
-      <v-col cols="3" style="display: flex; flex-direction: column;" v-if="isAuthenticated">
-        <router-link to="/home">
+    <v-navigation-drawer v-model="drawer" app temporary width="300">
+      <v-col cols="12" style="display: flex; flex-direction: column;" v-if="isAuthenticated">
+        <router-link to="/home" @click="drawer = false">
           <v-btn block color="primary">Home</v-btn>
         </router-link>
         <v-card outlined class="backgroundView mt-2">
             <v-card-title style="color: white;">Usuarios</v-card-title>
             <v-card-text>
-              <router-link to="/customers">
+              <router-link to="/customers" @click="drawer = false">
                 <v-btn block color="secondary" class="">Listado de usuarios</v-btn>
               </router-link>  
             </v-card-text>
             <v-card-text>
-              <router-link to="/customers-create">
+              <router-link to="/customers-create" @click="drawer = false">
                 <v-btn block color="secondary" class="">Crear usuario</v-btn>
               </router-link>
             </v-card-text>
@@ -27,24 +29,21 @@
         <v-card outlined class="backgroundView mt-2">
             <v-card-title style="color: white;">Trabajadores</v-card-title>
             <v-card-text>
-              <router-link to="/users">
+              <router-link to="/users" @click="drawer = false">
                 <v-btn block color="secondary" class="">Listado de trabajadores</v-btn>
               </router-link>  
             </v-card-text>
             <v-card-text>
-              <router-link to="/users-create">
+              <router-link to="/users-create" @click="drawer = false">
                 <v-btn block color="secondary" class="">Registrar trabajador</v-btn>
               </router-link>
             </v-card-text>
         </v-card>
       </v-col>
-
-      <v-divider vertical></v-divider>
-
-      <v-col cols="8" style="justify-content: center;" class="backgroundView">
-        <router-view />
-      </v-col>
-    </v-row>
+    </v-navigation-drawer>
+    <v-main>
+      <router-view />
+    </v-main>
   </v-app>
 </template>
 
@@ -55,6 +54,7 @@ import { useRouter } from 'vue-router';
 export default {
   data: () => ({
     isAuthenticated: false,
+    drawer: false,
   }),
   created() {
     const auth = getAuth();

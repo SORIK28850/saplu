@@ -1,11 +1,7 @@
 <template>
   <v-row class="mt-5" style="justify-content: center;">
     <v-col cols="9">
-      <v-row style="justify-content: center;">
-        <v-col cols="6">
-          <v-text-field v-model="search" label="Buscar" outlined dense ></v-text-field>
-        </v-col>
-      </v-row>
+      <v-text-field v-model="search" label="Buscar" outlined dense ></v-text-field>
 
       <v-data-table-server
         style="color: white;"
@@ -112,7 +108,7 @@ export default {
 <style scoped>
 .custom-table {
   background-color: rgba(128, 0, 128) !important;
-  border-radius: 5% !important;
+  
 }
 
 .custom-table th {
