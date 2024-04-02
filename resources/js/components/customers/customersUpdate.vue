@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     loadItem() {
-      axios.get('https://www.sap-lu.com/api/customers-detail', {
+      axios.get('http://127.0.0.1:8000/api/customers-detail', {
         params: {
           id: this.$route.params.id
         }
@@ -72,7 +72,7 @@ export default {
           }
         }
       
-        const response = await axios.post('https://www.sap-lu.com/api/customers-update', formData);
+        const response = await axios.post('http://127.0.0.1:8000/api/customers-update', formData);
         this.$swal({
           title: 'Usuario modificado',
           text: 'El usuario ha sido modificado con éxito.',

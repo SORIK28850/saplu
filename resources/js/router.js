@@ -47,4 +47,13 @@ router.beforeEach((to, from) => {
   });
 });
 
+const prod = 'https://www.sap-lu.com/';
+const dev = 'http://localhost:8080/';
+
+export const routesApi = [ 
+  {key: 'prod', value: prod},
+  {key: 'dev', value: dev}
+];
+
+
 export default router;
