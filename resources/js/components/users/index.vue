@@ -68,7 +68,7 @@
     methods: {
       loadItems({ page, itemsPerPage, sortBy }) {
         this.loading = true;
-        axios.get('http://127.0.0.1:8000/api/users')
+        axios.get('https://www.sap-lu.com/api/users')
           .then(response => {
             this.totalItems = response.data.length;
             this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
@@ -94,7 +94,7 @@
   
         if (confirmed.isConfirmed) {
           try {
-            const response = await axios.delete('http://127.0.0.1:8000/api/users-delete', { data: { id: id } });
+            const response = await axios.delete('https://www.sap-lu.com/api/users-delete', { data: { id: id } });
             this.$swal('Eliminado!', 'El usuario ha sido eliminado.', 'success');
             this.loadItems({ page: this.currentPage, itemsPerPage: this.itemsPerPage });
           } catch (error) {
