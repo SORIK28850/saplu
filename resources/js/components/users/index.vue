@@ -28,6 +28,9 @@
   <script>
   import axios from 'axios';
   import $ from 'jquery';
+
+  const dev = 'http://127.0.0.1:8000';
+  const prod = 'https://www.sap-lu.com';
   
   export default {
     data: () => ({
@@ -68,7 +71,7 @@
     methods: {
       loadItems({ page, itemsPerPage, sortBy }) {
         this.loading = true;
-        axios.get('https://www.sap-lu.com/api/users')
+        axios.get(dev + '/api/users')
           .then(response => {
             this.totalItems = response.data.length;
             this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
@@ -94,7 +97,7 @@
   
         if (confirmed.isConfirmed) {
           try {
-            const response = await axios.delete('https://www.sap-lu.com/api/users-delete', { data: { id: id } });
+            const response = await axios.delete(dev + '/api/users-delete', { data: { id: id } });
             this.$swal('Eliminado!', 'El usuario ha sido eliminado.', 'success');
             this.loadItems({ page: this.currentPage, itemsPerPage: this.itemsPerPage });
           } catch (error) {

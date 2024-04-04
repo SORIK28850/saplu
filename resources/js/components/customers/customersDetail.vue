@@ -65,6 +65,9 @@
   <script>
 import axios from 'axios';
 
+const dev = 'http://127.0.0.1:8000';
+const prod = 'https://www.sap-lu.com';
+
 export default {
   name: 'customerDetail',
   data() {
@@ -77,7 +80,7 @@ export default {
       this.$router.go(-1);
     },
     loadItem() {
-      axios.get('https://www.sap-lu.com/api/customers-detail', {
+      axios.get(dev + '/api/customers-detail', {
         params: {
           id: this.$route.params.id
         }

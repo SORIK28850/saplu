@@ -22,6 +22,9 @@
   
   <script>
   import axios from 'axios';
+
+  const dev = 'http://127.0.0.1:8000';
+  const prod = 'https://www.sap-lu.com';
   
   export default {
     name: 'CustomersCreate',
@@ -57,7 +60,7 @@
           }
         
           try {
-            const response = await axios.post('https://www.sap-lu.com/api/customers-create', formData, {
+            const response = await axios.post(dev + '/api/customers-create', formData, {
               headers: {
                 'Content-Type': 'multipart/form-data'
               }
