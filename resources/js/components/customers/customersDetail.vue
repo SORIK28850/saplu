@@ -80,7 +80,7 @@ export default {
       this.$router.go(-1);
     },
     loadItem() {
-      axios.get(dev + '/api/customers-detail', {
+      axios.get(prod + '/api/customers-detail', {
         params: {
           id: this.$route.params.id
         }

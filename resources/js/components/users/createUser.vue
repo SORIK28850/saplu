@@ -61,7 +61,7 @@
       async submitForm() {
         if (this.$refs.form.validate()) {
           try {
-            const response = await axios.post(dev + '/api/users-create', this.user);
+            const response = await axios.post(prod + '/api/users-create', this.user);
             this.$swal({
               title: 'Usuario creado',
               text: 'El usuario ha sido creado con éxito.',

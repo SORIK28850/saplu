@@ -70,7 +70,7 @@ export default {
   methods: {
     loadItems({ page, itemsPerPage, sortBy }) {
       this.loading = true;
-      axios.get(dev + '/api/customers')
+      axios.get(prod + '/api/customers')
         .then(response => {
           this.totalItems = response.data.length;
           this.totalPages = Math.ceil(this.totalItems / this.itemsPerPage);
@@ -96,7 +96,7 @@ export default {
 
       if (confirmed.isConfirmed) {
         try {
-          const response = await axios.delete(dev + '/api/customers-delete', { data: { id: id } });
+          const response = await axios.delete(prod + '/api/customers-delete', { data: { id: id } });
           this.$swal('Eliminado!', 'El usuario ha sido eliminado.', 'success');
           this.loadItems({ page: this.currentPage, itemsPerPage: this.itemsPerPage });
         } catch (error) {

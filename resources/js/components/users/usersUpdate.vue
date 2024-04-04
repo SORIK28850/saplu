@@ -47,7 +47,7 @@
     },
     methods: {
       loadUser() {
-        axios.get(dev + '/api/users-detail', {
+        axios.get(prod + '/api/users-detail', {
           params: {
             id: this.$route.params.id
           }
@@ -63,7 +63,7 @@
         if (this.$refs.form.validate()) {
           this.isSubmitting = true;
           try {
-            const response = await axios.post(dev + '/api/users-update', this.user);
+            const response = await axios.post(prod + '/api/users-update', this.user);
             this.$swal({
               title: 'Usuario modificado',
               text: 'El usuario ha sido modificado con éxito.',

@@ -60,7 +60,7 @@
           }
         
           try {
-            const response = await axios.post(dev + '/api/customers-create', formData, {
+            const response = await axios.post(prod + '/api/customers-create', formData, {
               headers: {
                 'Content-Type': 'multipart/form-data'
               }

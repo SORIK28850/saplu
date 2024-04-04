@@ -50,7 +50,7 @@ export default {
   },
   methods: {
     loadItem() {
-      axios.get(dev + '/api/customers-detail', {
+      axios.get(prod + '/api/customers-detail', {
         params: {
           id: this.$route.params.id
         }
@@ -75,7 +75,7 @@ export default {
           }
         }
       
-        const response = await axios.post(dev + '/api/customers-update', formData);
+        const response = await axios.post(prod + '/api/customers-update', formData);
         this.$swal({
           title: 'Usuario modificado',
           text: 'El usuario ha sido modificado con éxito.',
